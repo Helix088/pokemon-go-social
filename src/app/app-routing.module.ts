@@ -1,28 +1,34 @@
-import { NgModule } from "@angular/core";
-import { Routes, RouterModule } from "@angular/router";
-import { CommentsComponent } from "./comments/comments.component";
-import { PostsComponent } from "./posts/posts.component";
-import { PostEditComponent } from "./posts/post-edit/post-edit.component";
-import { PostDetailComponent } from "./posts/post-detail/post-detail.component";
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+import { PostsComponent } from './posts/posts.component';
+import { PostEditComponent } from './posts/post-edit/post-edit.component';
+import { PostDetailComponent } from './posts/post-detail/post-detail.component';
+import { MessagesComponent } from './messages/messages.component';
 
 const appRoutes: Routes = [
-    {path: '', redirectTo: '/', pathMatch: 'full'},
-    {
-        path: 'posts',
-        component: PostsComponent,
-        children: [
-            {path: 'new', component: PostEditComponent},
-            {path: ':id', component: PostEditComponent},
-            {path: ':/edit', component: PostEditComponent},
-        ],
-    },
-    {path: 'comments', component: CommentsComponent},
+  { path: '', redirectTo: '/posts', pathMatch: 'full' },
+  {
+    path: 'posts',
+    component: PostsComponent,
+    children: [
+      { path: 'new', component: PostEditComponent },
+      { path: ':id', component: PostEditComponent },
+      { path: ':/edit', component: PostEditComponent },
+    ],
+  },
+  {
+    path: 'messages',
+    component: MessagesComponent,
+    children: [
+      { path: 'new', component: PostEditComponent },
+      { path: ':id', component: PostEditComponent },
+      { path: ':/edit', component: PostEditComponent },
+    ],
+  },
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(appRoutes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forRoot(appRoutes)],
+  exports: [RouterModule],
 })
-export class AppRoutingModule {
-    
-}
+export class AppRoutingModule {}

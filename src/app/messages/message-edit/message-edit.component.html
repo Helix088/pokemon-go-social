@@ -1,19 +1,19 @@
 <div class="panel panel-default">
   <div class="panel-body">
-    <form id="post-edit">
+    <form id="document-edit">
       <div class="row">
         <div class="col-sm-12 form-group">
-          <label for="commenter">Commenter</label>
-          <input type="text" id="commenter" class="form-control" size="120" max="120" #commenter/>
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" class="form-control" size="120" max="120" #subject/>
         </div>
         <div class="col-sm-12 form-group">
-          <label for="comment">Comment</label>
-          <input type="text" id="comment" class="form-control" max="255" size="120"  #comment/>
+          <label for="message">Message</label>
+          <input type="text" id="message" class="form-control" max="255" size="120"  #msgText/>
         </div>
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <button class="btn btn-success" type="submit" (click)="onSendComment()">
+          <button class="btn btn-success" type="submit" (click)="onSendMessage()">
             Send
           </button>
           <button class="btn btn-danger" type="button" (click)="onClear()">
