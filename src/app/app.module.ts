@@ -13,6 +13,9 @@ import { CommentListComponent } from './comments/comment-list/comment-list.compo
 import { PostEditComponent } from './posts/post-edit/post-edit.component';
 import { PostItemComponent } from './posts/post-item/post-item.component';
 import { PostListComponent } from './posts/post-list/post-list.component';
+import { PostDetailComponent } from './posts/post-detail/post-detail.component';
+import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,11 +29,14 @@ import { PostListComponent } from './posts/post-list/post-list.component';
     CommentListComponent,
     PostEditComponent,
     PostItemComponent,
-    PostListComponent
+    PostListComponent,
+    PostDetailComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

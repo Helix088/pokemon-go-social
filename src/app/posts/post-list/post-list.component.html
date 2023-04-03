@@ -1,1 +1,17 @@
-<p>post-list works!</p>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="row pad-left-right">
+      <span class="pull-left title">Posts</span>
+      <a routerLink="new" class="btn btn-success pull-right">Add Post</a>
+    </div>
+  </div>
+  <div class="panel-body">
+    <div class="center-panel">
+      <app-post-item
+        *ngFor="let postEl of posts; let i = index"
+        [post]="postEl"
+        [index]="i"
+      ></app-post-item>
+    </div>
+  </div>
+</div>

@@ -1,1 +1,59 @@
-<p>post-edit works!</p>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <form id="post-edit" (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <label for="poster">Name:</label>
+          <input
+            type="text"
+            poster="poster"
+            id="poster"
+            class="form-control"
+            size="120"
+            max="120"
+            [ngModel]="post?.poster"
+            required
+            #poster="ngModel">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <label for="description">Post:</label>
+          <input
+            type="text"
+            name="description"
+            id="description"
+            class="form-control"
+            size="120"
+            max="255"
+            [ngModel]="post?.text"
+            #description="ngModel">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-12 form-group">
+          <label for="image">Image:</label>
+          <input
+            type="text"
+            name="image"
+            id="image"
+            class="form-control"
+            size="150"
+            max="255"
+            [ngModel]="post?.image"
+            #image="ngModel">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12 btn-toolbar">
+          <button class="btn btn-success" type="submit" [disabled]="!f.valid">Save</button>
+          <button class="btn btn-primary" type="button" (click)="onCancel()">Cancel</button>
+        </div>
+      </div>
+
+    </form>
+
+  </div>
+</div>

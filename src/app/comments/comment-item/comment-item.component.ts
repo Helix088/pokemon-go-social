@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { Comment } from '../comment.model';
 
 
 @Component({
@@ -8,15 +9,17 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./comment-item.component.css']
 })
 export class CommentItemComponent implements OnInit, OnDestroy {
-  
-constructor() {}
+  @Input() comment: Comment;
+  subscription: Subscription;
 
-ngOnInit() {
-    
-}
+  constructor() {}
 
-ngOnDestroy() {
+  ngOnInit() {
     
-}
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
 
 }
