@@ -12,11 +12,12 @@ const Post = require('../models/post');
 //     });
 // });
 
-router.get("/", async (req, res, next) => {
+router.get("/", (req, res, next) => {
   Post.find()
     .then((posts) => {
+        console.log(posts)
       res.status(200).json({
-        message: "Posts fetched successfully!",
+        message: "Posts fetched successfully!!!",
         posts: posts,
       });
     })

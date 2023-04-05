@@ -14,11 +14,9 @@ export class PostService implements OnInit {
   maxPostId: number;
 
   constructor(private http: HttpClient) {
-    this.posts = [];
   }
 
   ngOnInit() {
-    this.getPosts();
   }
 
   // getPosts() {
@@ -35,9 +33,11 @@ export class PostService implements OnInit {
   // }
 
   getPosts() {
-    this.http.get<Post[]>('http://localhost:3000/posts').subscribe(
+    
+    this.http.get<{message: string; posts: Post[]}>('http://localhost:3000/posts').subscribe(
       (posts) => {
-        this.posts = posts;
+        console.log(posts);
+        this.posts = posts.posts;
         this.maxPostId = this.getMaxId();
         this.postListChangedEvent.next(this.posts.slice());
       },
@@ -117,6 +117,7 @@ export class PostService implements OnInit {
     let maxId = 0;
     if (this.posts) {
       for (const post of this.posts) {
+        // this.posts[post];
         const currentId = Number(post.id);
         if (currentId > maxId) {
           maxId = currentId;
