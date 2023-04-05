@@ -4,13 +4,28 @@ module.exports = router;
 const sequenceGenerator = require("../models/sequenceGenerator");
 const Post = require('../models/post');
 
-router.get("/", (req, res, next) => {
-    Post.find({}).then((posts) => {
-        return res.status(200).json({posts: posts});
-    }).catch((err) => {
-        return res.status(500).json({ error: err });
+// router.get("/", (req, res, next) => {
+//     Post.find({}).then((posts) => {
+//         return res.status(200).json({posts: posts});
+//     }).catch((err) => {
+//         return res.status(500).json({ error: err });
+//     });
+// });
+
+router.get("/", async (req, res, next) => {
+  Post.find()
+    .then((posts) => {
+      res.status(200).json({
+        message: "Posts fetched successfully!",
+        posts: posts,
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({ title: "An exception occurred", err });
     });
 });
+
 
 router.post("/", (req, res, next) => {
     const maxPostId = sequenceGenerator.nextId("posts");
