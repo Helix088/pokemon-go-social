@@ -61,13 +61,13 @@ export class PostService implements OnInit {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
     this.http
-      .post<{ message: string; post: Post }>(
-        'https://localhost:3000/posts',
+      .post<{ message: string; posts: Post }>(
+        'http://localhost:3000/posts',
         post,
         { headers: headers }
       )
       .subscribe((responseData) => {
-        this.posts.push(responseData.post);
+        this.posts.push(responseData.posts);
       });
   }
 

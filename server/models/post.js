@@ -5,7 +5,6 @@ const postSchema = mongoose.Schema({
   poster: { type: String, required: true },
   text: { type: String },
   image: { type: String },
-  children: { type: Array, ref: "Post" },
 });
 
 module.exports = mongoose.model("Post", postSchema);

@@ -44,23 +44,6 @@ export class MessageService implements OnInit {
     // return null;
   }
 
-  storeMessages() {
-   let messages = JSON.parse(JSON.stringify(this.messages));
-   const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-   this.http.put(
-     'https://cms-project-acb01-default-rtdb.firebaseio.com/messages.json',
-     messages,
-     { headers }
-   ).subscribe(
-    (response) => {
-      this.messageListChangedEvent.next(this.messages.slice()), response;
-    },
-    (error) => {
-      console.error('Error saving messages: ', error);
-    }
-   ); 
-  }
-
   addMessage(message: Message) {
     if (!message) {
       return;
@@ -71,13 +54,13 @@ export class MessageService implements OnInit {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
     this.http
-      .post<{ messageString: string; message: Message }>(
+      .post<{ messageString: string; messages: Message }>(
         'http://localhost:3000/messages',
         message,
         { headers: headers }
       )
       .subscribe((responseData) => {
-        this.messages.push(responseData.message);
+        this.messages.push(responseData.messages);
       });
   }
 

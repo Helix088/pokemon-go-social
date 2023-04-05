@@ -77,11 +77,13 @@ class SequenceGenerator {
 
     switch (collectionType) {
       case "posts":
+        await getSequence();
         maxPostId++;
         updateObject = { maxPostId };
         nextId = maxPostId;
         break;
       case "messages":
+        await getSequence();
         maxMessageId++;
         updateObject = { maxMessageId };
         nextId = maxMessageId;

@@ -44,7 +44,8 @@ export class PostEditComponent implements OnInit, OnDestroy {
     const newPost = new Post(
       value.id,
       value.poster,
-      value.text
+      value.text,
+      value.image
     );
     if(this.editMode == true) {
       this.postService.updatePost(this.originalPost, newPost);
@@ -52,6 +53,7 @@ export class PostEditComponent implements OnInit, OnDestroy {
       this.postService.addPost(newPost);
     }
     this.router.navigate(['/']);
+    console.log(newPost);
   }
 
   onCancel() {

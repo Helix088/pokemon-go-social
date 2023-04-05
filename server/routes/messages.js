@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 module.exports = router;
+const mongoose = require("mongoose");
 const sequenceGenerator = require("./sequenceGenerator");
 const Message = require("../models/message");
 
@@ -14,36 +15,61 @@ router.get("/", (req, res, next) => {
     });
 });
 
-router.post("/", (req, res, next) => {
-  const maxMessageId = sequenceGenerator.nextId("messages");
+router.post("/", async (req, res, next) => {
+  try {
+    const messageId = await sequenceGenerator.nextId("messages");
 
-  const messageNew = new Message({
-    id: maxMessageId,
-    subject: req.body.subject,
-    msgText: req.body.msgText,
-    sender: req.body.sender,
-  });
-
-  messageNew
-    .save()
-    .then((createdMessage) => {
-      res.status(201).json({
-        message: "Message added successfully",
-        messageNew: createdMessage,
-      });
-    })
-    .catch((error) => {
-      res.status(500).json({
-        message: "An error occurred",
-        error: error,
-      });
+    const message = new Message({
+      id: messageId,
+      poster: req.body.poster,
+      msgText: req.body.msgText,
+      image: req.body.image,
     });
+
+    const createdMessage = await message.save();
+    res.status(201).json({
+      messageString: "Message added successfully!",
+      message: createdMessage,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: "An error occurred",
+      error: error,
+    });
+  }
 });
+
+
+// router.post("/", (req, res, next) => {
+//   const maxMessageId = sequenceGenerator.nextId("messages");
+
+//   const messageNew = new Message({
+//     id: maxMessageId,
+//     subject: req.body.subject,
+//     msgText: req.body.msgText,
+//     sender: req.body.sender,
+//   });
+
+//   messageNew
+//     .save()
+//     .then((createdMessage) => {
+//       res.status(201).json({
+//         message: "Message added successfully",
+//         messageNew: createdMessage,
+//       });
+//     })
+//     .catch((error) => {
+//       res.status(500).json({
+//         message: "An error occurred",
+//         error: error,
+//       });
+//     });
+// });
 
 router.put("/:id", (req, res, next) => {
   Message.findOne({ id: req.params.id })
     .then((message) => {
-      message.subject = req.body.subject;
       message.msgText = req.body.msgText;
       message.sender = req.body.sender;
 

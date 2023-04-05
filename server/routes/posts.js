@@ -1,16 +1,8 @@
 var express = require("express");
 var router = express.Router();
 module.exports = router;
-const sequenceGenerator = require("../models/sequenceGenerator");
+const sequenceGenerator = require("../routes/sequenceGenerator");
 const Post = require('../models/post');
-
-// router.get("/", (req, res, next) => {
-//     Post.find({}).then((posts) => {
-//         return res.status(200).json({posts: posts});
-//     }).catch((err) => {
-//         return res.status(500).json({ error: err });
-//     });
-// });
 
 router.get("/", (req, res, next) => {
   Post.find()
@@ -27,28 +19,29 @@ router.get("/", (req, res, next) => {
     });
 });
 
-
-router.post("/", (req, res, next) => {
-    const maxPostId = sequenceGenerator.nextId("posts");
+router.post("/", async (req, res, next) => {
+  try {
+    const postId = await sequenceGenerator.nextId("posts");
 
     const post = new Post({
-        id: maxPostId,
-        poster: req.body.poster,
-        text: req.body.text,
-        image: req.body.image,
+      id: postId,
+      poster: req.body.poster,
+      text: req.body.text,
+      image: req.body.image,
     });
 
-    post.save().then((createdPost) => {
-        req.status(201).json({
-            message: "Post added successfully",
-            post: createdPost,
-        });
-    }).catch((error) => {
-        res.status(500).json({
-            message: "An error occured",
-            error: error,
-        });
+    const createdPost = await post.save();
+    res.status(201).json({
+      message: "Post added successfully!",
+      post: createdPost,
     });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: "An error occurred",
+      error: error,
+    });
+  };
 });
 
 router.put("/:id", (req, res, next) => {
