@@ -13,13 +13,30 @@ export class PostService implements OnInit {
   postSelectedEvent = new EventEmitter<Post[]>();
   maxPostId: number;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.posts = [];
+  }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getPosts();
+  }
+
+  // getPosts() {
+  //   this.http.get('http://localhost:3000/posts').subscribe(
+  //     (posts: Post [] = []) => {
+  //       this.posts = posts;
+  //       this.maxPostId = this.getMaxId();
+  //       this.postListChangedEvent.next(this.posts.slice());
+  //     },
+  //     (error: any) => {
+  //       console.error(error);
+  //     }
+  //   )
+  // }
 
   getPosts() {
-    this.http.get('http://localhost:3000/posts').subscribe(
-      (posts: Post [] = []) => {
+    this.http.get<Post[]>('http://localhost:3000/posts').subscribe(
+      (posts) => {
         this.posts = posts;
         this.maxPostId = this.getMaxId();
         this.postListChangedEvent.next(this.posts.slice());
@@ -27,7 +44,7 @@ export class PostService implements OnInit {
       (error: any) => {
         console.error(error);
       }
-    )
+    );
   }
 
   getPost(index: string) {
@@ -35,7 +52,7 @@ export class PostService implements OnInit {
   }
 
   addPost(post: Post) {
-    if(!post) {
+    if (!post) {
       return;
     }
 
@@ -43,57 +60,57 @@ export class PostService implements OnInit {
 
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-    this.http.post<{ message: string; post: Post }> (
-      'https://localhost:3000/posts',
-      post,
-      { headers: headers }
-    ).subscribe(
-      (responseData) => {
+    this.http
+      .post<{ message: string; post: Post }>(
+        'https://localhost:3000/posts',
+        post,
+        { headers: headers }
+      )
+      .subscribe((responseData) => {
         this.posts.push(responseData.post);
-      }
-    )
+      });
   }
 
   updatePost(originalPost: Post, newPost: Post) {
-    if(!originalPost || !newPost) {
+    if (!originalPost || !newPost) {
       return;
     }
 
     const pos = this.posts.findIndex((p) => p.id === originalPost.id);
 
-    if(pos < 0) {
+    if (pos < 0) {
       return;
     }
 
     newPost.id = originalPost.id;
 
-    const headers = new HttpHeaders({ 'Content-Type':  'application/json' });
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-    this.http.put('http://localhost:3000/posts/' + originalPost.id, 
-    newPost,
-    { headers: headers }).subscribe(
-      (response: Response) => {
+    this.http
+      .put('http://localhost:3000/posts/' + originalPost.id, newPost, {
+        headers: headers,
+      })
+      .subscribe((response: Response) => {
         this.posts[pos] = newPost;
-      }
-    )
+      });
   }
 
   deletePost(post: Post) {
-    if(!post) {
+    if (!post) {
       return;
     }
 
     const pos = this.posts.findIndex((p) => p.id === post.id);
 
-    if(pos < 0) {
+    if (pos < 0) {
       return;
     }
 
-    this.http.delete('http://localhost:3000/posts/' + post.id).subscribe(
-      (response: Response) => {
+    this.http
+      .delete('http://localhost:3000/posts/' + post.id)
+      .subscribe((response: Response) => {
         this.posts.splice(pos, 1);
-      }
-    )
+      });
   }
 
   getMaxId() {

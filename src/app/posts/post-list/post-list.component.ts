@@ -9,7 +9,7 @@ import { PostService } from '../post.service';
   styleUrls: ['./post-list.component.css'],
 })
 export class PostListComponent implements OnInit, OnDestroy{
-  posts: Post[] = []
+  posts: Post[] = [];
   private subscription: Subscription;
 
   constructor(private postService: PostService) {}

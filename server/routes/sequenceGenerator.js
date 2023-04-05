@@ -1,24 +1,20 @@
 var Sequence = require('../models/sequenceGenerator');
 
-var maxDocumentId;
 var maxMessageId;
-var maxContactId;
+var maxPostId;
 var sequenceId = null;
 
 function SequenceGenerator() {
 
-Sequence.findOne()
-  .then(function(sequence) {
-    sequenceId = sequence._id;
-    maxPostId = sequence.maxPostId;
-    maxMessageId = sequence.maxMessageId;
-  })
-  .catch(function(err) {
-    return res.status(500).json({
-      title: 'An error occurred',
-      error: err
+  Sequence.findOne()
+    .then(function (sequence) {
+      sequenceId = sequence._id;
+      maxPostId = sequence.maxPostId;
+      maxMessageId = sequence.maxMessageId;
+    })
+    .catch(function (err) {
+      console.log("SequenceGenerator error = " + err);
     });
-  });
 }
 
 SequenceGenerator.prototype.nextId = function(collectionType) {

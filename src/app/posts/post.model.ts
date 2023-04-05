@@ -3,7 +3,6 @@ export class Post {
     public id: string,
     public poster: string,
     public text: string,
-    public image?: string,
-    public children?: Post[]
+    public image?: string
   ) {}
 }

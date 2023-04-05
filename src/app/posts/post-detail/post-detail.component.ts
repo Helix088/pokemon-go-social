@@ -11,7 +11,7 @@ import { PostService } from '../post.service';
 })
 export class PostDetailComponent implements OnInit {
   post: Post;
-  posts: Post[] = [new Post('', '', '', '', undefined)];
+  posts: Post[] = [new Post('', '', '', '')];
   id: string;
   nativeWindow: any;
 
