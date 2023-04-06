@@ -19,19 +19,6 @@ export class PostService implements OnInit {
   ngOnInit() {
   }
 
-  // getPosts() {
-  //   this.http.get('http://localhost:3000/posts').subscribe(
-  //     (posts: Post [] = []) => {
-  //       this.posts = posts;
-  //       this.maxPostId = this.getMaxId();
-  //       this.postListChangedEvent.next(this.posts.slice());
-  //     },
-  //     (error: any) => {
-  //       console.error(error);
-  //     }
-  //   )
-  // }
-
   getPosts() {
     
     this.http.get<{message: string; posts: Post[]}>('http://localhost:3000/posts').subscribe(

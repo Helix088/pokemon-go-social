@@ -34,13 +34,13 @@ export class PostDetailComponent implements OnInit {
   }
 
   onView() {
-    if(this.post.image) {
-      this.nativeWindow.open(this.post.image);
+    if(this.post.id) {
+      this.nativeWindow.open(this.post.id);
     }
   }
 
   onDelete() {
     this.postService.deletePost(this.post);
-    this.router.navigateByUrl('/');
+    this.router.navigateByUrl('/posts');
   }
 }

@@ -16,6 +16,11 @@ import { MessageItemComponent } from './messages/message-item/message-item.compo
 import { MessageListComponent } from './messages/message-list/message-list.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
+import { JournalComponent } from './journal/journal.component';
+import { JournalEditComponent } from './journal/journal-edit/journal-edit.component';
+import { JournalDetailComponent } from './journal/journal-detail/journal-detail.component';
+import { JournalListComponent } from './journal/journal-list/journal-list.component';
+import { JournalItemComponent } from './journal/journal-item/journal-item.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +35,12 @@ import { FormsModule } from '@angular/forms';
     MessagesComponent,
     MessageEditComponent,
     MessageItemComponent,
-    MessageListComponent
+    MessageListComponent,
+    JournalComponent,
+    JournalEditComponent,
+    JournalDetailComponent,
+    JournalListComponent,
+    JournalItemComponent
   ],
   imports: [
     BrowserModule,

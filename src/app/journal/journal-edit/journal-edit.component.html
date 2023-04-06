@@ -1,25 +1,25 @@
 <div class="panel panel-default">
   <div class="panel-body">
-    <form id="post-edit" (ngSubmit)="onSubmit(f)" #f="ngForm">
+    <form id="journal-edit" (ngSubmit)="onSubmit(f)" #f="ngForm">
       <div class="row">
         <div class="col-sm-12 form-group">
-          <label for="poster">Name:</label>
+          <label for="date">Date:</label>
           <input
             type="text"
-            name="poster"
-            id="poster"
+            name="date"
+            id="date"
             class="form-control"
             size="120"
             max="120"
-            [ngModel]="post?.poster"
+            [ngModel]="journal?.date"
             required
-            #poster="ngModel">
+            #date="ngModel">
         </div>
       </div>
 
       <div class="row">
         <div class="col-sm-12 form-group">
-          <label for="text">Post:</label>
+          <label for="text">Entry:</label>
           <textarea
             type="text"
             name="text"
@@ -27,12 +27,12 @@
             class="form-control"
             size="300"
             max="255"
-            [ngModel]="post?.text"
+            [ngModel]="journal?.text"
             #text="ngModel"></textarea>
         </div>
       </div>
 
-      <div class="row">
+      <!-- <div class="row">
         <div class="col-sm-12 form-group">
           <label for="image">Image:</label>
           <input
@@ -44,8 +44,8 @@
             max="255"
             [ngModel]="post?.image"
             #image="ngModel">
-        </div>
-      </div>
+        </div> -->
+      <!-- </div> -->
       <div class="row">
         <div class="col-xs-12 btn-toolbar">
           <button class="btn btn-success" type="submit" [disabled]="!f.valid">Save</button>
