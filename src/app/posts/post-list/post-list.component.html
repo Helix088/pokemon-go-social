@@ -2,11 +2,11 @@
   <div class="panel-heading">
     <div class="row pad-left-right">
       <span class="pull-left title">Posts</span>
-      <a routerLink="new" class="btn btn-success pull-right">Add Post</a>
+      <a routerLink="new" class="btn btn-primary pull-right">Add Post</a>
     </div>
   </div>
   <div class="panel-body">
-    <div class="center-panel">
+    <div class="center-panel center">
       <app-post-item
         *ngFor="let postEl of posts; let i = index"
         [post]="postEl"

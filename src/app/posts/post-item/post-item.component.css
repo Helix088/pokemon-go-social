@@ -1,9 +1,43 @@
 .postDiv {
   width: 100%;
-  height: 11rem;
+  height: 100%;
   margin: 2px;
   font-size: 1.3rem;
-  border: solid thin darkgrey;
+  background-color: cyan;
   float: left;
   padding: 1.2rem
+}
+
+.d-flex {
+  max-width: fit-content;
+}
+
+@media only screen and (min-width: 412px) {
+  .d-flex {
+  max-width: 360px;
+}
+}
+
+@media only screen and (min-width: 500px) {
+  .d-flex {
+  max-width: 470px;
+}
+}
+
+@media only screen and (min-width: 575px) {
+  .d-flex {
+  max-width: 490px;
+}
+}
+
+@media only screen and (min-width: 768px) {
+  .d-flex {
+  max-width: 430px;
+}
+}
+
+@media only screen and (min-width: 992px) {
+  .d-flex {
+  max-width: 590px;
+}
 }

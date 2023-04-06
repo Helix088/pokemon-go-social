@@ -1,10 +1,12 @@
-<a [routerLink]="[index]"
-routerLinkActive="active" class="list-group-item clearfix postDiv">
-  {{ post.poster }}
-  <br>
-  {{ post.text }}
-  <br>
-  <img src="{{ post.image }}" style="height: 100px; margin-left: auto; margin-right: auto;">
-  <br>
-  {{ post?.children }}
-</a>
+<div class="d-flex">
+  <a [routerLink]="[index]"
+  routerLinkActive="active" class="list-group-item clearfix postDiv">
+    {{ post.poster }}
+    <br>
+    {{ post.text }}
+    <br>
+    <img src="{{ post.image }}" style="height: 100px; margin-left: auto; margin-right: auto;">
+    <br>
+    {{ post?.children }}
+  </a>
+</div>

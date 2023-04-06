@@ -33,11 +33,11 @@ export class PostDetailComponent implements OnInit {
     );
   }
 
-  onView() {
-    if(this.post.id) {
-      this.nativeWindow.open(this.post.id);
-    }
-  }
+  // onView() {
+  //   if(this.post.id) {
+  //     this.nativeWindow.open(this.post.id);
+  //   }
+  // }
 
   onDelete() {
     this.postService.deletePost(this.post);

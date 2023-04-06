@@ -33,11 +33,11 @@ export class JournalDetailComponent implements OnInit {
       );
   }
 
-  onView() {
-    if(this.journal.id) {
-      this.nativeWindow.open(this.journal.id);
-    }
-  }
+  // onView() {
+  //   if(this.journal.id) {
+  //     this.nativeWindow.open(this.journal.id);
+  //   }
+  // }
 
   onDelete() {
     this.journalService.deleteJournal(this.journal);

@@ -1,4 +1,5 @@
-<div class="panel panel-default" xmlns="http://www.w3.org/1999/html">
+<div class="panel panel-default poke-ball" xmlns="http://www.w3.org/1999/html">
+  <div class="details">
   <div class="panel-heading">
     <div class="row pad-all">
       <h4 class="title margin-left-right">{{journal?.date}}</h4>
@@ -16,10 +17,11 @@
         <span class="label-value">{{ post?.image }}</span>
       </div> -->
        <div class="row pull-right margin-left-right">
-        <a (click)="onView()" class="btn btn-primary">View</a>
-        <a routerLink="edit" class="btn btn-info" >Edit</a>
-        <a (click)="onDelete()" class="btn btn-danger">Delete</a>
+        <!-- <a (click)="onView()" class="btn btn-primary">View</a> -->
+        <a routerLink="edit" class="btn btn-success" style="max-width: 100px;">Edit</a>
+        <a (click)="onDelete()" class="btn btn-danger" style="max-width: 100px;">Delete</a>
       </div>
+    </div>
     </div>
   </div>
 </div>

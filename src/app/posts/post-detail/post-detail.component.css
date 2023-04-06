@@ -13,3 +13,29 @@
   margin-left: 1rem;
   margin-right: 1rem;
 }
+
+.poke-ball {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10rem;
+  background: linear-gradient(
+    to top,
+     white 0%,
+    white 50%,
+    rgb(179, 0, 0) 50%,
+    rgb(179, 0, 0) 100%
+  );
+  border: 2px black solid;
+  border-radius: 50%;
+  width: 336px;
+  height: 336px;
+}
+
+.details {
+  margin-top: 90px;
+  margin-left: 39px;
+}
+
+label, .label-value {
+  font-weight: bold;
+}

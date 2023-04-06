@@ -1,3 +1,37 @@
 input.ng-invalid {
   border: 1px solid red;
 }
+
+.poke-ball {
+   margin-left: auto;
+  margin-right: auto;
+  margin-top: 10rem;
+  background: linear-gradient(
+    to top,
+     white 0%,
+    white 50%,
+    rgb(179, 0, 0) 50%,
+    rgb(179, 0, 0) 100%
+  );
+  border: 2px black solid;
+  border-radius: 50%;
+  width: 336px;
+  height: 336px;
+}
+
+.journal-info {
+  width: 250px;
+  margin-left: 39px;
+}
+
+#journal-edit {
+  margin-top: 78px;
+}
+
+label {
+  font-weight: bold;
+}
+
+.btn-toolbar {
+  justify-content: center;
+}
